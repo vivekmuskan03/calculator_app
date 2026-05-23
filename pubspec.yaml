@@ -19,7 +19,8 @@ dependencies:
   rational: ^2.1.0
 
   # SQLite-backed calculation history
-  sqflite: ^2.4.2+1
+  # pin to a version compatible with CI Dart SDK (runner currently uses Dart 3.4.x)
+  sqflite: ^2.3.3+1
 
   # Persistent key-value storage for Pro status and theme
   shared_preferences: ^2.3.2
