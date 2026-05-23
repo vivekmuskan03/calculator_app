@@ -1,0 +1,65 @@
+name: nexacalc
+description: A production-ready Android calculator app for Indian users with exact decimal arithmetic, on-device AI, and offline voice input.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Exact decimal arithmetic — no floating-point errors
+  decimal: ^2.3.3
+
+  # Rational arithmetic (transitive dependency of decimal, used in engine)
+  rational: ^2.1.0
+
+  # SQLite-backed calculation history
+  sqflite: ^2.4.2+1
+
+  # Persistent key-value storage for Pro status and theme
+  shared_preferences: ^2.3.2
+
+  # One-time Pro upgrade via Google Play
+  in_app_purchase: ^3.2.0
+
+  # Reactive state management
+  flutter_riverpod: ^2.5.1
+
+  # App documents directory for model file storage
+  path_provider: ^2.1.4
+
+  # RECORD_AUDIO permission request at runtime
+  permission_handler: ^11.3.1
+
+  # CSV export share sheet
+  share_plus: ^10.0.2
+
+  # "Copied!" toast notification
+  fluttertoast: ^8.2.8
+
+  # Confetti burst on 100th calculation
+  confetti: ^0.7.0
+
+  # Roboto Mono and Inter typefaces
+  google_fonts: ^6.2.1
+
+  # Date/time formatting for history grouping
+  intl: ^0.19.0
+
+  # HTTP client for LLM model download
+  http: ^1.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Lint rules
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
