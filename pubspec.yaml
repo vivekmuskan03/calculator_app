@@ -20,7 +20,7 @@ dependencies:
 
   # SQLite-backed calculation history
   # pin to a version compatible with CI Dart SDK (runner currently uses Dart 3.4.x)
-  sqflite: ^2.3.3+1
+  sqflite: 2.3.3+1
 
   # Persistent key-value storage for Pro status and theme
   shared_preferences: ^2.3.2
