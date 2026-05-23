@@ -1,9 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:nexacalc/core/db/history_db_impl.dart';
 import 'package:nexacalc/core/interfaces/history_db.dart';
+import 'package:cross_file/cross_file.dart';
 
 /// History screen showing recent calculations. Accepts an optional
 /// [historyDb] for dependency injection in tests; defaults to
@@ -42,8 +42,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
     final path = '${dir.path}/nexacalc_history_export.csv';
     await _db.exportToCSV(path);
     try {
-      await Share.shareFiles([path], text: 'NexaCalc history export');
+      await Share.shareXFiles([XFile(path)], text: 'NexaCalc history export');
     } catch (_) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Exported to $path')));
     }
   }

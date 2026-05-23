@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:nexacalc/core/billing/pro_upgrade_impl.dart';
 import 'package:nexacalc/core/theme/theme_editor_impl.dart';
-import 'package:nexacalc/core/providers/voice_nl_providers.dart';
 import 'package:nexacalc/core/billing/in_app_purchase_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nexacalc/core/providers/monetization_providers.dart';
 import 'package:nexacalc/core/billing/pro_upgrade_notifier.dart';
 import 'package:nexacalc/core/billing/receipt_validator.dart';
 import 'package:nexacalc/screens/model_download_dialog.dart';
+import 'package:nexacalc/screens/theme_editor_screen.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nexacalc/core/engine/decimal_engine_impl.dart';
 import 'package:nexacalc/core/db/history_db_impl.dart';
 import 'package:nexacalc/core/formatter/indian_formatter_impl.dart';
+import 'package:nexacalc/core/interfaces/decimal_engine.dart';
 import 'package:nexacalc/core/interfaces/history_db.dart';
 import 'package:nexacalc/core/providers/monetization_providers.dart';
 

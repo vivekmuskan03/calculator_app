@@ -34,6 +34,12 @@ dependencies:
   # App documents directory for model file storage
   path_provider: ^2.1.4
 
+  # File sharing helper re-export used by share_plus APIs
+  cross_file: ^0.3.4+2
+
+  # Path manipulation helpers
+  path: ^1.9.1
+
   # RECORD_AUDIO permission request at runtime
   permission_handler: ^11.3.1
 

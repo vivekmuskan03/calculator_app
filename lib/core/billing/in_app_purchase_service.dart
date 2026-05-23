@@ -8,7 +8,7 @@ class InAppPurchaseService {
 
   Future<bool> isAvailable() => _iap.isAvailable();
 
-  Future<void> init(void Function(PurchaseDetails) onPurchase) async {
+  Future<void> init(FutureOr<void> Function(PurchaseDetails) onPurchase) async {
     _sub = _iap.purchaseStream.listen((p) {
       for (final detail in p) {
         onPurchase(detail);

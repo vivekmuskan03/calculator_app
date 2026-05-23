@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
+import 'package:nexacalc/core/interfaces/ad_manager.dart';
 import 'ad_manager_impl.dart';
 import 'package:nexacalc/core/interfaces/pro_upgrade.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _kDismissKey = 'ad_banner_dismissed_v1';
 
-class AdManagerNotifier extends ChangeNotifier {
+class AdManagerNotifier extends ChangeNotifier implements AdManager {
   final AdManagerImpl _impl;
 
   bool _dismissed = false;

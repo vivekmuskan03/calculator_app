@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nexacalc/core/providers/calculator_notifier.dart';
 import 'package:nexacalc/widgets/ad_banner.dart';
-import 'package:nexacalc/screens/settings_screen.dart';
 import 'package:nexacalc/screens/history_screen.dart';
 import 'package:nexacalc/core/providers/voice_nl_providers.dart';
 import 'package:flutter/services.dart';
@@ -88,7 +87,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 textStyle: const TextStyle(fontSize: 20),
               ),
-              onPressed: onPressed ?? () => _append(label),
+              onPressed: onPressed ?? () {},
               child: Text(label),
             ),
           ),
@@ -237,6 +236,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                                   // Interpret NL
                                   final result = await nl.interpret(text);
                                   // Show interpreted text briefly and set expression
+                                  if (!mounted) return;
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result.displayText), duration: const Duration(seconds: 2)));
                                   _controller.text = result.expression;
                                   _controller.selection = TextSelection.collapsed(offset: result.expression.length);
@@ -262,6 +262,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                                   if (manual != null && manual.trim().isNotEmpty) {
                                     try {
                                       final result = await nl.interpret(manual.trim());
+                                      if (!mounted) return;
                                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result.displayText), duration: const Duration(seconds: 2)));
                                       _controller.text = result.expression;
                                       _controller.selection = TextSelection.collapsed(offset: result.expression.length);
@@ -269,10 +270,12 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                                       notifier.setExpression(result.expression);
                                       await notifier.evaluate();
                                     } catch (e) {
+                                      if (!mounted) return;
                                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('NL parse failed: $e')));
                                     }
                                   }
                                 } on Exception catch (e) {
+                                  if (!mounted) return;
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Voice error: $e')));
                                 }
                               },
