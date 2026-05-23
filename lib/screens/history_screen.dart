@@ -3,7 +3,6 @@ import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:nexacalc/core/db/history_db_impl.dart';
 import 'package:nexacalc/core/interfaces/history_db.dart';
-import 'package:cross_file/cross_file.dart';
 
 /// History screen showing recent calculations. Accepts an optional
 /// [historyDb] for dependency injection in tests; defaults to

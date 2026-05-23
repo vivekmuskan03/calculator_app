@@ -91,11 +91,10 @@ void main() {
       expect(fmt('0.5'), equals('0.5'));
     });
 
-    // Behaviour: Decimal.parse('1.0').toString() produces "1.0" in the decimal
-    // package, so the formatter preserves the trailing zero.
-    // Document: 1.0 → "1.0" (trailing zero preserved from Decimal representation)
-    test('1.0 → "1.0" (trailing zero preserved from Decimal representation)', () {
-      expect(fmt('1.0'), equals('1.0'));
+    // Behaviour: Decimal.parse('1.0') normalizes to "1" in the current
+    // decimal package, so the formatter emits the canonical representation.
+    test('1.0 → "1" (canonical decimal representation)', () {
+      expect(fmt('1.0'), equals('1'));
     });
 
     test('100000.5 → "1,00,000.5"', () {

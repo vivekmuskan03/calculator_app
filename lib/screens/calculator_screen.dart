@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nexacalc/core/providers/calculator_notifier.dart';
+import 'package:nexacalc/core/interfaces/history_db.dart';
 import 'package:nexacalc/widgets/ad_banner.dart';
 import 'package:nexacalc/screens/history_screen.dart';
 import 'package:nexacalc/core/providers/voice_nl_providers.dart';
 import 'package:flutter/services.dart';
 
 class CalculatorScreen extends ConsumerStatefulWidget {
-  const CalculatorScreen({super.key});
+  final HistoryDB? historyDb;
+
+  const CalculatorScreen({super.key, this.historyDb});
 
   @override
   ConsumerState<CalculatorScreen> createState() => _CalculatorScreenState();
@@ -108,7 +111,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
             tooltip: 'History',
             onPressed: () async {
               final expr = await Navigator.of(context).push<String?>(
-                MaterialPageRoute(builder: (_) => const HistoryScreen()),
+                MaterialPageRoute(builder: (_) => HistoryScreen(historyDb: widget.historyDb)),
               );
               if (expr != null) {
                 final notifier = ref.read(calculatorProvider);
