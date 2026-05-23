@@ -26,7 +26,9 @@ class FakeHistoryDB implements HistoryDB {
 void main() {
   testWidgets('Calculator screen renders and shows buttons', (tester) async {
     await tester.binding.setSurfaceSize(const Size(800, 1200));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
+    addTearDown(() async {
+      await tester.binding.setSurfaceSize(null);
+    });
 
     await tester.pumpWidget(const ProviderScope(child: MaterialApp(home: CalculatorScreen(historyDb: FakeHistoryDB()))));
 
@@ -39,7 +41,9 @@ void main() {
 
   testWidgets('History button opens history screen', (tester) async {
     await tester.binding.setSurfaceSize(const Size(800, 1200));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
+    addTearDown(() async {
+      await tester.binding.setSurfaceSize(null);
+    });
 
     await tester.pumpWidget(const ProviderScope(child: MaterialApp(home: CalculatorScreen(historyDb: FakeHistoryDB()))));
     expect(find.byIcon(Icons.history), findsOneWidget);

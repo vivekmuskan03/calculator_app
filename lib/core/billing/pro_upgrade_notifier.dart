@@ -6,20 +6,10 @@ import 'package:nexacalc/core/billing/receipt_validator.dart';
 class ProUpgradeNotifier extends ChangeNotifier implements ProUpgrade {
   final ProUpgradeImpl _impl = ProUpgradeImpl();
 
-  ProUpgradeNotifier() {
-    // ensure prefs load
-    _ensureLoaded();
-  }
+  ProUpgradeNotifier();
 
   @override
   bool get isActive => _impl.isActive;
-
-  Future<void> _ensureLoaded() async {
-    // ProUpgradeImpl loads from prefs on construction asynchronously.
-    // Wait a tick and then notify so UI picks up any loaded state.
-    await Future.delayed(Duration.zero);
-    notifyListeners();
-  }
 
   @override
   Future<void> purchase() async {
